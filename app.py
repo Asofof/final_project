@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from tensorflow.keras.models import load_model
 
 # Загружаем модель 
-model = load_model('ANN_model.h5', compile=False)
+model = load_model('ANN_model.h5')
 print(model.input_shape)
 
 # Загружаем scaler
