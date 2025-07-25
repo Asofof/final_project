@@ -146,5 +146,5 @@ plt.tight_layout()
 plt.show()
 
 # Сохраняем модель
-model.save("ANN_model.h5")
-print("Модель сохранена как ANN_model.h5")
+model.save("ANN_model.keras")
+print("Модель сохранена как ANN_model.keras")

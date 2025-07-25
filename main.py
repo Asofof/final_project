@@ -4,7 +4,7 @@ from tensorflow.keras.models import load_model
 import joblib
 
 # Загружаем модель ANN
-model = load_model("ANN_model.h5")
+model = load_model("ANN_model.keras")
 
 # Загружаем scaler
 scaler = joblib.load("scaler.pkl")
