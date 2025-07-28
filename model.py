@@ -24,34 +24,6 @@ plt.title("Корреляция между признаками (теплова�
 plt.tight_layout()
 plt.show()
 
-# Агрегирующие функции по месяцу подписки
-df["subscription_month"] = df["subscription_age"].round().astype(int)
-agg_by_month = (
-    df.groupby("subscription_month")
-    .agg(
-        {
-            "bill_avg": "mean",
-            "download_avg": "mean",
-            "upload_avg": "mean",
-            "churn": "mean",
-        }
-    )
-    .reset_index()
-)
-plt.figure(figsize=(12, 6))
-sns.lineplot(data=agg_by_month, x="subscription_month", y="churn", label="Средний отток")
-sns.lineplot(data=agg_by_month, x="subscription_month", y="bill_avg", label="Средний счет")
-plt.title("Зависимость churn и bill_avg от возраста подписки")
-plt.xlabel("Месяцы подписки")
-plt.ylabel("Значения")
-plt.legend()
-plt.grid(True)
-plt.tight_layout()
-plt.show()
-
-print("""churn выше в первые 5 месяцев — затем стабилизируется.
-bill_avg растет с возрастом подписки — клиенты, остающиеся дольше, обычно платят больше (покупают доп. услуги).""")
-
 # Удаление сильно коррелирующих признаков
 high_corr_features = set()
 for i in range(len(correlation_matrix.columns)):

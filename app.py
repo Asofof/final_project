@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from tensorflow.keras.models import load_model
 
 # Загружаем модель 
-model = load_model('ANN_model.keras')
+model = load_model('ANN_model.keras', compile=False)
 print(model.input_shape)
 
 # Загружаем scaler
@@ -35,7 +35,6 @@ service_failure_count = st.number_input("Кількість збоїв серв�
 download_avg = st.number_input("Середній обсяг завантаження (МБ)", min_value=0.0, max_value=100000.0, value=1000.0)
 upload_avg = st.number_input("Середній обсяг відвантаження (МБ)", min_value=0.0, max_value=100000.0, value=500.0)
 download_over_limit = st.selectbox("Перевищення ліміту завантаження (так/ні)", options=["Так", "Ні"])
-subscription_month = st.number_input("Місяць підписки (1-12)", min_value=1, max_value=12, value=1)
 
 # Преобразование категориальных признаков в числовые
 input_dict = {
@@ -48,7 +47,6 @@ input_dict = {
     'download_avg': download_avg,
     'upload_avg': upload_avg,
     'download_over_limit': 1 if download_over_limit == "Так" else 0,
-    'subscription_month': subscription_month
 }
 
 # Создаем DataFrame строго по feature_cols
